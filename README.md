@@ -68,21 +68,9 @@ JSON-отчёты и результаты тестов сохраняются в
 
 ## Отчёты проверок
 
-[Успешный запуск № 9](https://github.com/p11menova/cybersec/actions/runs/39158366822).
-Ниже — сводки из его артефактов. Полные JSON-отчёты доступны в разделе Artifacts.
+последний успешный запуск - (https://github.com/p11menova/cybersec/actions/runs/39158366822).
 
-### Bandit
 
-Находок: 0, ошибок сканирования: 0.
+<img width="1492" height="835" alt="image" src="https://github.com/user-attachments/assets/1cf49435-8bc0-48dd-b6bd-753c2f545ca4" />
 
-![Отчёт Bandit](docs/screenshots/bandit-report.jpg)
 
-[Скриншот проверки в Actions](docs/screenshots/bandit-actions.jpg)
-
-### Snyk
-
-Уязвимостей High/Critical: 0.
-
-![Отчёт Snyk](docs/screenshots/snyk-report.jpg)
-
-[Скриншот проверки в Actions](docs/screenshots/snyk-actions.jpg)
