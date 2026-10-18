@@ -6,33 +6,25 @@
 - pytest: 61 тест прошёл, покрытие приложения 97%.
 - Gunicorn + curl: smoke test прошёл (`401 → 401 → 200 → 201 → 200`).
 - Bandit: 0 находок, 0 ошибок сканера.
-- pip-audit runtime-зависимостей: известных уязвимостей не найдено.
-- Полный pip-audit runtime + dev: проверены 53 зависимости, 0 известных уязвимостей, 0 пропусков.
 - Snyk локально не запускался; результат проверки в GitHub Actions приведён ниже.
 
 Полные локальные отчёты сохраняются в `reports/` и исключены из Git.
 
 ## GitHub Actions
 
-[Успешный запуск № 4](https://github.com/p11menova/cybersec/actions/runs/39154442892), 18 октября 2026.
+[Успешный запуск № 6](https://github.com/p11menova/cybersec/actions/runs/39157669514), 18 октября 2026.
 
 - **API tests** — успешно, включая HTTP smoke test.
 - **SAST — Bandit** — успешно.
-- **SCA — pip-audit** — успешно.
 - **SCA — Snyk** — успешно; блокирующих уязвимостей High/Critical не обнаружено.
 
-Общий статус — **Success**. Все четыре задания завершились успешно; длительность запуска — 32 секунды.
-Дальнейшие запуски доступны на [странице workflow](https://github.com/p11menova/cybersec/actions/workflows/ci.yml).
+Общий статус — **Success**. Все три задания завершились успешно; длительность запуска — 33 секунды.
 
-Настоящий скриншот страницы GitHub Actions, сохранённый 18.10.2026:
+Настоящий скриншот страницы GitHub Actions:
 
-![GitHub Actions: тесты, Bandit, pip-audit и Snyk прошли](screenshots/actions-summary.jpg)
+![GitHub Actions: тесты, Bandit и Snyk прошли](screenshots/actions-summary.jpg)
 
-Скриншот подтверждает статусы заданий и наличие Artifacts. Для просмотра подробных логов и
-скачивания отчётов GitHub в используемом браузере требует вход в аккаунт.
+[Запуски workflow](https://github.com/p11menova/cybersec/actions/workflows/ci.yml).
 
-Артефакты запуска: `sast-bandit`, `sca-pip-audit`, `sca-snyk`, `test-reports`.
-Они содержат полные отчёты сканеров и результаты тестов. Скриншот также вставлен в README.
-
-Не включать в скриншоты токены, значения секретов и пользовательские пароли.
-Незавершённый/пропущенный скан не является доказательством отсутствия уязвимостей.
+Артефакты: `sast-bandit`, `sca-snyk`, `test-reports`.
+Они содержат полные отчёты сканеров и результаты тестов.

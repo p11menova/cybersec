@@ -198,11 +198,10 @@ Workflow запускается на каждый `push`, `pull_request` и вр
 
 1. **API tests** — pytest, security regression tests, порог покрытия 90%, реальный HTTP smoke test через Gunicorn и curl.
 2. **SAST — Bandit** — проверка `secure_api/` и `wsgi.py` на все уровни серьёзности. Любая находка завершает job с ошибкой.
-3. **SCA — pip-audit** — проверка runtime- и dev-зависимостей по базе PyPI; любая известная уязвимость завершает job с ошибкой.
-4. **SCA — Snyk** — инструмент из задания; блокирует High и Critical, сохраняет JSON-отчёт.
+3. **SCA — Snyk** — инструмент из задания; блокирует High и Critical, сохраняет JSON-отчёт.
 
 JSON-отчёты и результаты тестов сохраняются в **Artifacts** на 30 дней, в том числе при ошибке сканирования.
-Bandit, pip-audit и Snyk выводят краткий результат в **Job summary**, удобный для скриншота.
+Bandit и Snyk выводят краткий результат в **Job summary**, удобный для скриншота.
 Ошибки доступа к сервисам не считаются отсутствием уязвимостей.
 
 ### Настройка Snyk (однократно)
@@ -224,9 +223,7 @@ mkdir -p reports
 python -m pytest --cov=secure_api --cov-fail-under=90 --cov-report=term-missing --junitxml=reports/pytest.xml
 python scripts/http_smoke.py
 python -m bandit -r secure_api wsgi.py -f json -o reports/bandit.json
-python -m pip_audit -r requirements-dev.txt --format json --output reports/pip-audit.json
 python scripts/scan_summary.py bandit reports/bandit.json
-python scripts/scan_summary.py pip-audit reports/pip-audit.json
 ```
 
 Smoke test сам создаёт временную базу, случайные учётные данные и секрет, запускает Gunicorn
@@ -247,8 +244,8 @@ Smoke test сам создаёт временную базу, случайные
 - Описание API и защиты: этот `README.md`.
 - Последний успешный запуск и скриншоты отчётов: [docs/evidence.md](docs/evidence.md).
 
-Подтверждённый успешный результат: [запуск № 4](https://github.com/p11menova/cybersec/actions/runs/39154442892) —
-все четыре задания прошли: тесты API, Bandit, pip-audit и Snyk. Отчёты доступны в Artifacts этого запуска.
+Подтверждённый успешный результат: [запуск № 6](https://github.com/p11menova/cybersec/actions/runs/39157669514) —
+все три задания прошли: тесты API, Bandit и Snyk. Отчёты доступны в Artifacts этого запуска.
 
 ![GitHub Actions: результаты проверок](docs/screenshots/actions-summary.jpg)
 

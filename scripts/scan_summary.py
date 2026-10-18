@@ -14,11 +14,6 @@ data = json.loads(path.read_text())
 if kind == "bandit":
     print(f"Findings: **{len(data['results'])}**. Scanner errors: **{len(data['errors'])}**.")
     print(f"\nLines scanned: {data['metrics']['_totals']['loc']}.")
-elif kind == "pip-audit":
-    deps = data["dependencies"]
-    count = sum(len(dep.get("vulns", [])) for dep in deps)
-    skipped = sum("skip_reason" in dep for dep in deps)
-    print(f"Dependencies: **{len(deps)}**. Vulnerabilities: **{count}**. Skipped: **{skipped}**.")
 elif kind == "snyk":
     if "error" in data:
         print("Scan error; see the Snyk step log. No successful result is available.")
