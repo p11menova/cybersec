@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["secure_api"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
