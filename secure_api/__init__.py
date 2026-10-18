@@ -20,6 +20,7 @@ from werkzeug.exceptions import HTTPException
 from .db import close_db, get_db, init_db
 
 password_hasher = PasswordHasher()
+AUTH_SCHEME = "Bearer"
 
 
 def error(message, status):
@@ -110,7 +111,7 @@ def create_app(test_config=None):
         response.headers["Cache-Control"] = "no-store"
         response.headers["Referrer-Policy"] = "no-referrer"
         if response.status_code == 401:
-            response.headers["WWW-Authenticate"] = "Bearer"
+            response.headers["WWW-Authenticate"] = AUTH_SCHEME
         return response
 
     @app.errorhandler(HTTPException)
@@ -152,7 +153,7 @@ def create_app(test_config=None):
              "aud": "secure-notes-client", "jti": uuid4().hex},
             app.config["JWT_SECRET_KEY"], algorithm="HS256",
         )
-        return jsonify({"access_token": token, "token_type": "Bearer", "expires_in": 900})
+        return jsonify({"access_token": token, "token_type": AUTH_SCHEME, "expires_in": 900})
 
     @app.get("/api/data")
     @require_token

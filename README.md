@@ -247,6 +247,11 @@ Smoke test сам создаёт временную базу, случайные
 - Описание API и защиты: этот `README.md`.
 - Последний успешный запуск и скриншоты отчётов: [docs/evidence.md](docs/evidence.md).
 
+Подтверждённый успешный результат: [запуск № 4](https://github.com/p11menova/cybersec/actions/runs/39154442892) —
+все четыре задания прошли: тесты API, Bandit, pip-audit и Snyk. Отчёты доступны в Artifacts этого запуска.
+
+![GitHub Actions: результаты проверок](docs/screenshots/actions-summary.jpg)
+
 ## 7. Источники
 
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/).
