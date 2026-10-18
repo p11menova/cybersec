@@ -64,4 +64,25 @@ Workflow запускается на каждый `push`, `pull_request` и вр
 2. **SAST — Bandit** — проверка `secure_api/` и `wsgi.py` на все уровни серьёзности. Любая находка завершает job с ошибкой.
 3. **SCA — Snyk** — инструмент из задания; блокирует High и Critical, сохраняет JSON-отчёт.
 
-JSON-отчёты и результаты тестов сохраняются в **Artifacts** на 30 дней
+JSON-отчёты и результаты тестов сохраняются в **Artifacts** на 30 дней.
+
+## Отчёты проверок
+
+[Успешный запуск № 9](https://github.com/p11menova/cybersec/actions/runs/39158366822).
+Ниже — сводки из его артефактов. Полные JSON-отчёты доступны в разделе Artifacts.
+
+### Bandit
+
+Находок: 0, ошибок сканирования: 0.
+
+![Отчёт Bandit](docs/screenshots/bandit-report.jpg)
+
+[Скриншот проверки в Actions](docs/screenshots/bandit-actions.jpg)
+
+### Snyk
+
+Уязвимостей High/Critical: 0.
+
+![Отчёт Snyk](docs/screenshots/snyk-report.jpg)
+
+[Скриншот проверки в Actions](docs/screenshots/snyk-actions.jpg)
